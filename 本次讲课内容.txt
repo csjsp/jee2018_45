@@ -19,3 +19,8 @@ commit(提交到本地代码库)
 push 提交到服务器
 
 怎么获取服务器最新的代码 pull
+
+log4j2
+删掉原来log4j-api-2.7.jar，可能需要关掉myeclipse。邮箱有类库。增加log4j-slf4j-impl-2.8.2.jar、log4j-api-2.8.2.jar、log4j-core-2.8.2.jar、slf4j-api-1.7.12.jar、slf4j-api-1.7.12.jar。
+
+在src目录下增加log4j2.xml。具体看该文件

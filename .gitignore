@@ -1,0 +1,3 @@
+/WebRoot/WEB-INF/lib/*.jar
+/WebRoot/WEB-INF/classes/demo/*.class
+*.class

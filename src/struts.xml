@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+   <constant name="struts.devMode" value="true"/>
+   <constant name="struts.custom.i18n.resources" value="global"/>
+  <package name="default" extends="struts-default">
+     <action name="checkLogin" class="controller.CheckLogin">
+       <result name="success">/login_s2_suc.jsp</result>
+       <result name="suc" type="redirect">/login_s2_suc.jsp</result>
+       <result name="fail">/login_s2_fail.jsp</result>
+       <result name="input">/login_s2_tags.jsp</result>
+     </action>
+     
+     <action name="compute" class="controller.Compute">
+       <result>/output.jsp</result>
+     </action>
+     <action name="logout" class="controller.Logout">
+       <result type="redirect">/index.jsp</result>
+     </action>
+     <action name="checkInDb" class="controller.CheckLogin" method="checkInDb">
+       <result name="suc" type="redirect">/login_s2_suc.jsp</result>
+       <result name="fail">/login_s2_fail.jsp</result>
+     </action>
+     <action name="stu_list" class="controller.StuAction">
+        <result>/stu_list.jsp</result>
+     </action>
+     <action name="checkLoginByObj" class="controller.CheckLoginByObj">
+        <result>/login_obj_suc.jsp</result>
+        <result name="input">/login_obj.jsp</result>
+     </action>
+     <action name="loginI18N" class="controller.LoginI18N">
+        <result name="input,fail">/login_i18n.jsp</result>
+        <result name="redirect" type="redirect">/login_i18n_suc.jsp</result>
+        <result name="forward">/login_i18n_suc.jsp</result>
+     </action>
+     <action name="showLocs" class="controller.ShowLocs">
+        <result>/loc_list.jsp</result>
+        </action>
+  </package>
+</struts>

@@ -1,0 +1,16 @@
+git
+ant
+log4j
+
+git
+协同工作，历史记录
+who when where what
+服务器端，客户端
+github.com 
+create new repository
+
+客户端
+git,TortoiseGit
+服务器有代码，本地没有
+clone
+服务器没有代码，本地有代码

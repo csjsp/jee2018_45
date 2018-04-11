@@ -14,3 +14,8 @@ git,TortoiseGit
 服务器有代码，本地没有
 clone
 服务器没有代码，本地有代码
+create new repository
+commit(提交到本地代码库)
+push 提交到服务器
+
+怎么获取服务器最新的代码 pull

@@ -1,26 +1,10 @@
-git
-ant
-log4j
-
-git
-协同工作，历史记录
-who when where what
-服务器端，客户端
-github.com 
-create new repository
-
-客户端
-git,TortoiseGit
-服务器有代码，本地没有
-clone
-服务器没有代码，本地有代码
-create new repository
-commit(提交到本地代码库)
-push 提交到服务器
-
-怎么获取服务器最新的代码 pull
-
-log4j2
-删掉原来log4j-api-2.7.jar，可能需要关掉myeclipse。邮箱有类库。增加log4j-slf4j-impl-2.8.2.jar、log4j-api-2.8.2.jar、log4j-core-2.8.2.jar、slf4j-api-1.7.12.jar
-
-在src目录下增加log4j2.xml。具体看该文件
+private final static Logger logger
+  =LoggerFactory.getLogger(I18NDemo.class);
+  logger.debug("loc is {}",);
+  
+  org apache struts2
+  logger的层次 root和自己 additivity
+  
+<File name="file" fileName="${prj.name}.log">
+  <PatternLayout pattern="%d{MMdd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+</File>

@@ -16,6 +16,7 @@ public class I18NDemo {
   public static void main(String[] args) {
     // if(在大陆) inCn();
     // else inTw();
+    inCn();
     // loc();
     // i18n();
     // formatDemo();
@@ -69,8 +70,8 @@ public class I18NDemo {
   }
 
   public static void inCn() {
-    out.println("学号");
-    out.println("信息");
+    logger.error("学号");
+    logger.error("信息");
   }
 
   public static void inTw() {
@@ -80,7 +81,8 @@ public class I18NDemo {
   public static void getAllLocs(){
     Locale[] locs=Locale.getAvailableLocales();
     for(Locale loc:locs){
-      logger.debug("loc is->{}",loc.getDisplayName(loc));      
+      logger.debug("loc is->{}",loc.getDisplayName(loc));   
+ 
     }
   }
 }

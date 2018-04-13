@@ -1,24 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
-<Properties>
-<!--声明变量 -->
- <property name="prj.name" value="jee2018"/>
- <property name="log.home" value="${sys:catalina.home}/logs"/>
- </Properties>
-<!--输出位置 -->
- <Appenders>
-     <Console name="Console" target="SYSTEM_OUT">
-       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-    </Console>
- </Appenders>
-<!--哪些类的什么级别的信息输出到哪 -->
-<Loggers>
-<Logger name="demo" level="debug" additivity="false">
-   <AppenderRef ref="Console"/>
-</Logger>
-<Root level="info">
-   <AppenderRef ref="Console"/>
-</Root>
-</Loggers>
+	<Properties>
+		<!--声明变量 -->
+		<property name="prj.name" value="jee2018" />
+		<property name="log.home" value="${sys:catalina.home}/logs" />
+		<property name="pattern">
+			%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+		</property>
+	</Properties>
+	<!--输出位置 -->
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${pattern}" />
+		</Console>
+		<File name="file" fileName="${prj.name}.log" append="false">
+			<PatternLayout pattern="${pattern}" />
+		</File>
+		<File name="error" fileName="${prj.name}-error.log" append="false">
+			<ThresholdFilter level="error" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout pattern="${pattern}" />
+		</File>
+		<RollingFile name="rollingFile" fileName="${prj.name}.txt"
+			filePattern="${prj.name}-%d{yyyyMMdd}-%i.txt">							
+			<PatternLayout	pattern="${pattern}" />
+			<!-- 什么时候产生新文件 -->
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2KB" />
+			</Policies>			
+			<DefaultRolloverStrategy max="20" />			
+		</RollingFile>
+	</Appenders>
+	<!--哪些类的什么级别的信息输出到哪 -->
+	<Loggers>
+		<Logger name="demo" level="debug" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="file" />
+			<AppenderRef ref="error" />
+			<AppenderRef ref="rollingFile" />
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="file" />
+		</Root>
+	</Loggers>
 </Configuration>
 

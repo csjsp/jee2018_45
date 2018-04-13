@@ -1,10 +1,28 @@
-private final static Logger logger
-  =LoggerFactory.getLogger(I18NDemo.class);
-  logger.debug("loc is {}",);
+private final static Logger logger=LoggerFactory.getLogger(I18NDemo.class);
+  logger.debug("loc is {}",信息);，用{}作为占位符。
   
-  org apache struts2
-  logger的层次 root和自己 additivity
-  
+  logger层次结构，默认的是Root，没有定义时使用默认。
+  org org.apache org.apache.struts
+  定义自己的logger后，root和自己都用,additivity控制是否使用上层的logger。默认为true。  
+ 
 <File name="file" fileName="${prj.name}.log">
   <PatternLayout pattern="%d{MMdd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
 </File>
+
+对信息级别过滤
+<File name="error" fileName="${prj.name}-error.log" append="false">
+			<ThresholdFilter level="error" onMatch="ACCEPT"	onMismatch="DENY" />
+			<PatternLayout pattern="${pattern}" />
+		</File>
+滚动日志文件，满足一定条件后自动生成新文件。
+
+<RollingFile name="rollingFile" fileName="${prj.name}.txt"
+			filePattern="${prj.name}-%d{yyyyMMdd}-%i.txt">							
+			<PatternLayout	pattern="${pattern}" />
+			<!-- 什么时候产生新文件 -->
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2KB" />
+			</Policies>			
+			<DefaultRolloverStrategy max="20" />			
+		</RollingFile>

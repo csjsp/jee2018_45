@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jee2018" basedir=".">
+	<property name="prj.name" value="jee2018" />
+	<property name="lib.dir" value="WebRoot/WEB-INF/lib" />
+	<property name="build.dir" value="WebRoot/WEB-INF/classes" />
+	<path id="cp">
+		<pathelement path="${build.dir}" />
+		<fileset dir="${lib.dir}" />
+	</path>
+	<target name="db-start">
+		<java classname="org.hsqldb.server.Server"
+		classpathref="cp" dir="${lib.dir}"
+		fork="true"/>
+	</target>
+	<target name="db-manager">
+		<java classname="org.hsqldb.util.DatabaseManagerSwing"
+		classpathref="cp" dir="${lib.dir}"
+		fork="true"/>
+	</target>
+	<target name="db-shutdown">
+	   <sql
+    driver="org.hsqldb.jdbcDriver"
+    url="jdbc:hsqldb:hsql://localhost"
+    userid="sa"
+    password=""
+    classpathref="cp">shutdown</sql>
+	</target>
+</project>

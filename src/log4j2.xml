@@ -13,7 +13,7 @@
  </Appenders>
 <!--哪些类的什么级别的信息输出到哪 -->
 <Loggers>
-<Logger name="demo" level="debug">
+<Logger name="demo" level="debug" additivity="false">
    <AppenderRef ref="Console"/>
 </Logger>
 <Root level="info">

@@ -7,7 +7,12 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class I18NDemo {
+  private final static Logger logger
+  =LoggerFactory.getLogger(I18NDemo.class);
   public static void main(String[] args) {
     // if(ÔÚ´óÂ½) inCn();
     // else inTw();
@@ -75,7 +80,7 @@ public class I18NDemo {
   public static void getAllLocs(){
     Locale[] locs=Locale.getAvailableLocales();
     for(Locale loc:locs){
-      out.println(loc.getDisplayName(loc));      
+      logger.debug("loc is->{}",loc.getDisplayName(loc));      
     }
   }
 }

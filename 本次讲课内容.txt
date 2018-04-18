@@ -25,3 +25,25 @@ unknown-handler-stack?)>
 
 <s:url var="sub2Root" action="root" namespace="/sub"/>
     <a href="${sub2Root}">/sub访问/下action</a> 
+	
+	myAction.setDate(new Date());
+	init() destroy()　intercept
+	AbstractInterceptor
+	
+	<interceptors>
+	   <interceptor name="" class=""/>
+	</interceptors>
+	
+	package (result-types?, 
+	interceptors?, 
+	default-interceptor-ref?, 
+	default-action-ref?, 
+	default-class-ref?, 
+	global-results?,
+	global-allowed-methods?,
+	global-exception-mappings?, 
+	action*)>
+	
+	什么时候拦截器起作用
+	 <interceptor-ref name="assignDate"/>
+	

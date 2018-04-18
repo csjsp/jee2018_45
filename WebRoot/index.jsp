@@ -47,6 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
   <s:url var="sub2Root" action="root" namespace="/sub"/>
     <a href="${sub2Root}">/sub访问/下action</a> 
-    <a href="sub/root"></a>
+    <br>拦截器
+    <a href="myAction">显示日期</a>
   </body>
 </html>

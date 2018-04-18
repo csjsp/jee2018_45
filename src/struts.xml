@@ -40,4 +40,5 @@
         </action>
   </package>
   <include file="ns/ns.xml"/>
+  <include file="interceptor/interceptor.xml"/>
 </struts>

@@ -48,6 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <s:url var="sub2Root" action="root" namespace="/sub"/>
     <a href="${sub2Root}">/sub访问/下action</a> 
     <br>拦截器
-    <a href="myAction">显示日期</a>
+    <a href="myActionNoParams">显示日期</a>
+    <a href="interceptor_input.jsp">为action赋值</a>
   </body>
 </html>

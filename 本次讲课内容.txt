@@ -46,4 +46,8 @@ unknown-handler-stack?)>
 	
 	什么时候拦截器起作用
 	 <interceptor-ref name="assignDate"/>
+	让下一个拦截器进行拦截
+	return invocation.invoke();
 	
+	params:表单里边的值赋值给action
+	i18n:

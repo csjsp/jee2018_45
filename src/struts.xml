@@ -39,4 +39,5 @@
         <result>/loc_list.jsp</result>
         </action>
   </package>
+  <include file="ns/ns.xml"/>
 </struts>

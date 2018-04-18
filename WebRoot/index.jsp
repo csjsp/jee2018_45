@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8" contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -39,5 +40,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="show_loc.jsp">客户端的语言和地区</a>
     <a href="login_i18n.jsp">国际化</a>
     <a href="showLocs">显示所有语言地区</a>
+    <br>命名空间
+    <a href="default">访问默认命名空间的action</a>
+    <s:url var="root2Sub" action="sub" namespace="/"/>
+    <a href="${root2Sub}">/访问/sub下action</a> 
+    
+  <s:url var="sub2Root" action="root" namespace="/sub"/>
+    <a href="${sub2Root}">/sub访问/下action</a> 
+    <a href="sub/root"></a>
   </body>
 </html>

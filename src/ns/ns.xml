@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+  <package name="default2" extends="struts-default" namespace="">
+     <action name="default">
+       <result>/ns_suc.jsp</result>
+     </action>
+  </package>
+  <package name="root" extends="struts-default" namespace="/">
+      <action name="root">
+       <result>/ns_suc.jsp</result>
+      </action>
+  </package>
+  <package name="sub" extends="struts-default" namespace="/sub">
+      <action name="sub">
+       <result>/ns_suc.jsp</result>
+      </action>  
+  </package>
+</struts>

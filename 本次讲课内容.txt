@@ -1,28 +1,27 @@
-private final static Logger logger=LoggerFactory.getLogger(I18NDemo.class);
-  logger.debug("loc is {}",信息);，用{}作为占位符。
-  
-  logger层次结构，默认的是Root，没有定义时使用默认。
-  org org.apache org.apache.struts
-  定义自己的logger后，root和自己都用,additivity控制是否使用上层的logger。默认为true。  
- 
-<File name="file" fileName="${prj.name}.log">
-  <PatternLayout pattern="%d{MMdd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-</File>
+io sql
+namespace="" 默认命名空间
+/ 根命名空间
+/sub
+1 都可以访问自己下的action和默认下的action
+2 互相不能访问
+action的全名:命名空间+action名字
 
-对信息级别过滤
-<File name="error" fileName="${prj.name}-error.log" append="false">
-			<ThresholdFilter level="error" onMatch="ACCEPT"	onMismatch="DENY" />
-			<PatternLayout pattern="${pattern}" />
-		</File>
-滚动日志文件，满足一定条件后自动生成新文件。
+<include file=""/>
+struts ((package|include|bean|constant)*, 
+|不分前后，*代表0或多个
+unknown-handler-stack?)>
+？代表0或1个
 
-<RollingFile name="rollingFile" fileName="${prj.name}.txt"
-			filePattern="${prj.name}-%d{yyyyMMdd}-%i.txt">							
-			<PatternLayout	pattern="${pattern}" />
-			<!-- 什么时候产生新文件 -->
-			<Policies>
-				<OnStartupTriggeringPolicy />
-				<SizeBasedTriggeringPolicy size="2KB" />
-			</Policies>			
-			<DefaultRolloverStrategy max="20" />			
-		</RollingFile>
+访问网站要么在根目录
+/default.action
+
+要么在子目录
+/sub/sub.action
+
+""有default,/下有root(/root.action),
+/sub下有sub(/sub/sub.action)
+可以访问：/default.action,/sub/default.action
+不能互相访问/sub.action,/sub/root.action
+
+<s:url var="sub2Root" action="root" namespace="/sub"/>
+    <a href="${sub2Root}">/sub访问/下action</a> 

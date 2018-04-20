@@ -23,4 +23,15 @@
 			</interceptor-stack>
 		
 		<default-interceptor-ref name="secStack"/>
-		<glo
+		<exception-mapping 
+          exception="java.sql.SQLException" 
+          result="sql_ex"/>
+          <result name="sql_ex">/sql_ex.jsp</result>
+		  
+		  <global-results>
+			<result name="io_ex">/io_ex.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.io.IOException"
+				result="io_ex" />
+		</global-exception-mappings>

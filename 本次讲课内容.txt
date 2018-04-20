@@ -1,53 +1,26 @@
-io sql
-namespace="" 默认命名空间
-/ 根命名空间
-/sub
-1 都可以访问自己下的action和默认下的action
-2 互相不能访问
-action的全名:命名空间+action名字
-
-<include file=""/>
-struts ((package|include|bean|constant)*, 
-|不分前后，*代表0或多个
-unknown-handler-stack?)>
-？代表0或1个
-
-访问网站要么在根目录
-/default.action
-
-要么在子目录
-/sub/sub.action
-
-""有default,/下有root(/root.action),
-/sub下有sub(/sub/sub.action)
-可以访问：/default.action,/sub/default.action
-不能互相访问/sub.action,/sub/root.action
-
-<s:url var="sub2Root" action="root" namespace="/sub"/>
-    <a href="${sub2Root}">/sub访问/下action</a> 
-	
-	myAction.setDate(new Date());
-	init() destroy()　intercept
-	AbstractInterceptor
-	
-	<interceptors>
-	   <interceptor name="" class=""/>
-	</interceptors>
-	
-	package (result-types?, 
-	interceptors?, 
-	default-interceptor-ref?, 
-	default-action-ref?, 
-	default-class-ref?, 
-	global-results?,
-	global-allowed-methods?,
-	global-exception-mappings?, 
-	action*)>
-	
-	什么时候拦截器起作用
-	 <interceptor-ref name="assignDate"/>
-	让下一个拦截器进行拦截
-	return invocation.invoke();
-	
-	params:表单里边的值赋值给action
-	i18n:
+ <action name="myActionWithParams" class="controller.MyAction">
+        <interceptor-ref name="assignDate"/>
+        <interceptor-ref name="params"/>        
+        <result>/interceptor_suc.jsp</result>
+     </action>
+	 
+	  <interceptor-stack name="assignParamsStack">
+	     <interceptor-ref name="assignDate"/>
+	     <interceptor-ref name="params"/>
+	  </interceptor-stack>
+	  
+	  <interceptor-ref name="assignParamsStack"/>
+	  package" must match "(result-types?,interceptors?,
+	  default-interceptor-ref?,default-action-ref?,default-class- ref?,global-results?,
+ global-allowed-methods?,global-exception-mappings?,action*)".
+ 
+ <global-results>
+		   <result name="login">/login_s2.jsp</result>
+		</global-results>
+		<interceptor-stack name="secStack">
+		 	   <interceptor-ref name="secCheck"/>
+		 	   <interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		
+		<default-interceptor-ref name="secStack"/>
+		<glo

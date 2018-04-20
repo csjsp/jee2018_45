@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <s:debug/>
     入门
     <br>
     <a href="login.jsp">login</a>
@@ -50,5 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br>拦截器
     <a href="myActionNoParams">显示日期</a>
     <a href="interceptor_input.jsp">为action赋值</a>
+    <s:url var="privateUrl" action="private" namespace="/sec"/>
+    <a href="${privateUrl}">必须登录才能访问action</a>
   </body>
 </html>

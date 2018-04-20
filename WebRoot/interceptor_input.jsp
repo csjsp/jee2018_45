@@ -35,5 +35,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <s:textfield key="username"/>
    <s:submit/>
    </s:form>
+   myActionWithStack
+   <s:form name="input" action="myActionWithStack">
+   <s:textfield key="username"/>
+   <s:submit/>
+   </s:form>
   </body>
 </html>

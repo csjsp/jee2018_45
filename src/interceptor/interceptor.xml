@@ -6,10 +6,14 @@
   <package name="interceptor" extends="struts-default" namespace="">
   <interceptors>
 	   <interceptor name="assignDate" class="interceptor.AssignDateInterceptor"/>
-	</interceptors>
-	
+	</interceptors>	
      <action name="myActionNoParams" class="controller.MyAction">
         <interceptor-ref name="assignDate"/>
+        <result>/interceptor_suc.jsp</result>
+     </action>
+     <action name="myActionWithParams" class="controller.MyAction">
+        <interceptor-ref name="assignDate"/>
+        <interceptor-ref name="params"/>        
         <result>/interceptor_suc.jsp</result>
      </action>
      

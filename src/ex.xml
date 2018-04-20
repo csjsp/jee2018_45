@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+	<package name="ex" extends="struts-default" namespace="">
+		<global-results>
+			<result name="io_ex">/io_ex.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.io.IOException"
+				result="io_ex" />
+		</global-exception-mappings>
+		<action name="exDemo" class="controller.ExDemo">
+			<exception-mapping exception="java.sql.SQLException"
+				result="sql_ex" />
+			<result name="sql_ex">/sql_ex.jsp</result>
+		</action>
+	</package>
+</struts>

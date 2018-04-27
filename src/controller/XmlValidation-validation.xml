@@ -8,7 +8,7 @@
 			<param name="min">20</param>
 			<param name="max">50</param>
 			<!-- <message>超出范围[${min},${max}]</message> -->
-			<mesage key="test_int.outof.range" />
+			<message key="test_int.outof.range" />
 		</field-validator>
 	</field>
 	<field name="test_double">
@@ -18,4 +18,27 @@
 			<message>超出范围[${minInclusive},${maxInclusive}]</message>
 		</field-validator>
 	</field>
+	<field name="test_stringlength">
+	   <field-validator type="requiredstring">
+	     <message>没有输入值</message>
+	   </field-validator>
+	  <field-validator type="stringlength">
+	     <param name="minLength">3</param>
+	     <message>至少3个字符，现在有${test_stringlength.length()}</message>
+	  </field-validator>
+	</field>
+	<field name="pass">
+	<field-validator type="stringlength">
+	     <param name="minLength">3</param>
+	     <message>至少3个字符，现在有${pass.length()}</message>
+	  </field-validator>
+	   <field-validator type="fieldexpression">
+	    <param name="expression">pass.equals(repass)</param>
+	    <message>两次输入密码不一致</message>	     
+	   </field-validator>
+	</field>
+	<validator type="expression">
+	  <param name="expression">pass.startsWith("123")</param>
+	  <message>密码没有以123开头</message>	  
+	</validator>
 </validators>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="test_int">
+		<field-validator type="int">
+			<param name="min">20</param>
+			<param name="max">50</param>
+			<!-- <message>超出范围[${min},${max}]</message> -->
+			<mesage key="test_int.outof.range" />
+		</field-validator>
+	</field>
+	<field name="test_double">
+		<field-validator type="double">
+			<param name="minInclusive">30</param>
+			<param name="maxInclusive">60</param>
+			<message>超出范围[${minInclusive},${maxInclusive}]</message>
+		</field-validator>
+	</field>
+</validators>

@@ -1,37 +1,12 @@
- <action name="myActionWithParams" class="controller.MyAction">
-        <interceptor-ref name="assignDate"/>
-        <interceptor-ref name="params"/>        
-        <result>/interceptor_suc.jsp</result>
-     </action>
-	 
-	  <interceptor-stack name="assignParamsStack">
-	     <interceptor-ref name="assignDate"/>
-	     <interceptor-ref name="params"/>
-	  </interceptor-stack>
-	  
-	  <interceptor-ref name="assignParamsStack"/>
-	  package" must match "(result-types?,interceptors?,
-	  default-interceptor-ref?,default-action-ref?,default-class- ref?,global-results?,
- global-allowed-methods?,global-exception-mappings?,action*)".
- 
- <global-results>
-		   <result name="login">/login_s2.jsp</result>
-		</global-results>
-		<interceptor-stack name="secStack">
-		 	   <interceptor-ref name="secCheck"/>
-		 	   <interceptor-ref name="defaultStack"/>
-			</interceptor-stack>
-		
-		<default-interceptor-ref name="secStack"/>
-		<exception-mapping 
-          exception="java.sql.SQLException" 
-          result="sql_ex"/>
-          <result name="sql_ex">/sql_ex.jsp</result>
-		  
-		  <global-results>
-			<result name="io_ex">/io_ex.jsp</result>
-		</global-results>
-		<global-exception-mappings>
-			<exception-mapping exception="java.io.IOException"
-				result="io_ex" />
-		</global-exception-mappings>
+action类名-validation.xml
+<field name="test_int">
+  <field-validator type="int">
+    <param name="min">20</param>
+    <param name="max">50</param>
+    <message>超出范围[${min},${max}]</message>
+  </field-validator>
+</field>
+message key=
+double
+minInclusive include
+maxInclusive

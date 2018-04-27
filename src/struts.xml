@@ -39,6 +39,13 @@
         <result>/loc_list.jsp</result>
         </action>
   </package>
+  <package name="validation" extends="struts-default">
+     <action name="xmlValidation" class="controller.XmlValidation">
+        <result>/validation_res.jsp</result>
+        <result name="input">/validation_input.jsp</result>
+        
+     </action>
+  </package>
   <include file="ns/ns.xml"/>
   <include file="interceptor/interceptor.xml"/>
   <include file="interceptor/sec/sec.xml"/>

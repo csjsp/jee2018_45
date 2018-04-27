@@ -26,7 +26,7 @@ fieldexpression  pass.equals(repass)
 	(20,50) test_int<50&&test_int>20
 	
 	
-	<!CDATA[[  ]]>
+	<![CDATA[  ]]>
 	
 	expression：表达式校验器，
 	唯一的非字段校验器，	

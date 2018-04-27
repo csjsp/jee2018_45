@@ -28,7 +28,7 @@
 	  </field-validator>
 	</field>
 	<field name="pass">
-	<field-validator type="stringlength">
+	<field-validator type="stringlength" short-circuit="true">
 	     <param name="minLength">3</param>
 	     <message>至少3个字符，现在有${pass.length()}</message>
 	  </field-validator>

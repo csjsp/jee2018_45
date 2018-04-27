@@ -31,4 +31,8 @@ fieldexpression  pass.equals(repass)
 	expression：表达式校验器，
 	唯一的非字段校验器，	
 	错误信息在actionerror中
-	
+
+	校验器的短路和优先级
+	校验器有逻辑关系的话，一个不通过，
+	另外一个没必要校验， short-circuit=true
+	可以短路同一变量定义在后边的校验器	

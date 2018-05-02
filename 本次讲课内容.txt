@@ -1,38 +1,26 @@
-action类名-validation.xml
-<field name="test_int">
-  <field-validator type="int">
-    <param name="min">20</param>
-    <param name="max">50</param>
-    <message>超出范围[${min},${max}]</message>
-  </field-validator>
-</field>
-message key=
-double
-minInclusive include
-maxInclusive
+1 struts2-jquery-plugin-4.0.2.jar
+2 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+3 head中<sj:head/>
+4<sj:datepicker name="test_date_jquery" label="Select a Date"
+            displayFormat="%{getText('format.date.input')}"
+            changeMonth="true" changeYear="true" />
+format.date.input=yy-mm-dd
+			这里用的是yy，不是yyyy。
 
-stringlength什么也不输，不会校验
-required校验对象 null ""
-requiredstring
-fieldexpression  pass.equals(repass)
-
-<field name="pass">
-	   <field-validator type="fieldexpression">
-	    <param name="expression">pass.equals(repass)</param>
-	    <message>两次输入密码不一致</message>
-	     
-	   </field-validator>
+<field name="test_date_jquery">
+		<field-validator type="date">
+		    <param name="minExpression">${minDate}</param>
+		    <param name="maxExpression">${maxDate}</param>
+			<message>应在${getText('format.date.display',{min})}和${getText('format.date.display',{max})}之间</message>
+		</field-validator>
 	</field>
-	(20,50) test_int<50&&test_int>20
-	
-	
-	<![CDATA[  ]]>
-	
-	expression：表达式校验器，
-	唯一的非字段校验器，	
-	错误信息在actionerror中
+public Date getMinDate(){
+	return new GregorianCalendar(2000,0,1).getTime();
+}
+public Date getMaxDate(){
+	return new GregorianCalendar(2020,0,1).getTime();
+}
 
-	校验器的短路和优先级
-	校验器有逻辑关系的话，一个不通过，
-	另外一个没必要校验， short-circuit=true
-	可以短路同一变量定义在后边的校验器	
+format.date.display={0,date,yyyy-mm-dd}
+
+${getText('format.date.display',{min}}

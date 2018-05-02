@@ -41,4 +41,11 @@
 	  <param name="expression">pass.startsWith("123")</param>
 	  <message>密码没有以123开头</message>	  
 	</validator>
+	<field name="test_date_jquery">
+		<field-validator type="date">
+		    <param name="minExpression">${minDate}</param>
+		    <param name="maxExpression">${maxDate}</param>
+			<message>应在${getText('format.date.display',{min})}和${getText('format.date.display',{max})}之间</message>
+		</field-validator>
+	</field>
 </validators>

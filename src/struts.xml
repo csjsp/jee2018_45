@@ -38,6 +38,9 @@
      <action name="showLocs" class="controller.ShowLocs">
         <result>/loc_list.jsp</result>
         </action>
+     <action name="fileUpload" class="controller.FileUpload">
+        <result>/upload_res.jsp</result>
+     </action>    
   </package>
   <package name="validation" extends="struts-default">
      <action name="xmlValidation" class="controller.XmlValidation">
@@ -50,4 +53,5 @@
   <include file="interceptor/interceptor.xml"/>
   <include file="interceptor/sec/sec.xml"/>
   <include file="ex.xml"/>
+   
 </struts>

@@ -58,5 +58,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br>xml中定义校验规则
     <br>
     <a href="validation_input.jsp">演示</a>
-  </body>
+    <br><a href="upload.jsp">文件上传</a>
+      </body>
 </html>

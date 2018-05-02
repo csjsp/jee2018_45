@@ -24,3 +24,35 @@ public Date getMaxDate(){
 format.date.display={0,date,yyyy-mm-dd}
 
 ${getText('format.date.display',{min}}
+
+<%@ taglib prefix="sjr" uri="/struts-jquery-richtext-tags"%>
+<sjr:ckeditor
+					id="richtextEditor"
+					name="echo"
+					rows="10"
+					cols="80"
+					width="730"
+					height="250"/>
+					
+					jee2018_lib
+					
+文件上传
+   <s:form name="uploadForm" action="fileUpload"
+   enctype="multipart/form-data">
+     <s:file name="upload"/>
+     <s:submit/>
+   </s:form>
+
+接受文件上传的Action，有三个变量
+File 文本框的名字
+String    文本框的名字+ContentType;
+String 文本框的名字+FileName;
+
+复制到自己目录
+String path=ServletActionContext
+ 			.getServletContext().getRealPath("/upload");
+	File destFile=new File(path,uploadFileName);
+	Files.copy(upload.toPath(), destFile.toPath(),
+			StandardCopyOption.REPLACE_EXISTING);
+
+

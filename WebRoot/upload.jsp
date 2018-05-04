@@ -25,8 +25,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <s:form name="uploadForm" action="fileUpload"
-   enctype="multipart/form-data">
+   enctype="multipart/form-data" method="post">
      <s:file name="upload"/>
+     <s:submit/>
+   </s:form>
+   限制文件类型 image/*
+   <s:form name="uploadForm2" action="fileUploadLimitType"
+   enctype="multipart/form-data" method="post">
+     <s:file name="upload"/>
+     <s:submit/>
+   </s:form>
+   限制文件扩展名.txt,.xml
+   <s:form name="uploadForm2" action="fileUploadLimitExt"
+   enctype="multipart/form-data" method="post">
+     <s:file name="upload"/>
+     <s:submit/>
+   </s:form>   
+    多文件
+   <s:form name="uploadsForm" action="filesUpload"
+   enctype="multipart/form-data">
+     <s:file name="uploads"/>
+     <s:file name="uploads"/>
+     <s:file name="uploads"/>
      <s:submit/>
    </s:form>
   </body>

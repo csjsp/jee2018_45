@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="utf-8" contentType="text/html;charset=utf-8"%>
+﻿<%@ page language="java" pageEncoding="utf-8" contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -25,5 +25,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <s:debug/>
+   <a href="<%=basePath%>upload/<s:property value='uploadFileName'/>">download</a>
+   <s:url var="downUrl" action="fileDown">  
+     <s:param name="contentType" value="uploadContentType"/>
+     <s:param name="fileName" value="uploadFileName"/>
+     <s:param name="path" value="path"/>
+   </s:url>
+   <a href="${downUrl}">通过action下载</a>
+   多文件
+   <br>
+   <s:iterator value="uploadsFileName">
+      <s:property/><br>      
+   </s:iterator>
+   
   </body>
 </html>

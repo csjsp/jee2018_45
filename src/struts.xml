@@ -3,55 +3,87 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-   <constant name="struts.devMode" value="true"/>
-   <constant name="struts.custom.i18n.resources" value="global"/>
-  <package name="default" extends="struts-default">
-     <action name="checkLogin" class="controller.CheckLogin">
-       <result name="success">/login_s2_suc.jsp</result>
-       <result name="suc" type="redirect">/login_s2_suc.jsp</result>
-       <result name="fail">/login_s2_fail.jsp</result>
-       <result name="input">/login_s2_tags.jsp</result>
-     </action>
-     
-     <action name="compute" class="controller.Compute">
-       <result>/output.jsp</result>
-     </action>
-     <action name="logout" class="controller.Logout">
-       <result type="redirect">/index.jsp</result>
-     </action>
-     <action name="checkInDb" class="controller.CheckLogin" method="checkInDb">
-       <result name="suc" type="redirect">/login_s2_suc.jsp</result>
-       <result name="fail">/login_s2_fail.jsp</result>
-     </action>
-     <action name="stu_list" class="controller.StuAction">
-        <result>/stu_list.jsp</result>
-     </action>
-     <action name="checkLoginByObj" class="controller.CheckLoginByObj">
-        <result>/login_obj_suc.jsp</result>
-        <result name="input">/login_obj.jsp</result>
-     </action>
-     <action name="loginI18N" class="controller.LoginI18N">
-        <result name="input,fail">/login_i18n.jsp</result>
-        <result name="redirect" type="redirect">/login_i18n_suc.jsp</result>
-        <result name="forward">/login_i18n_suc.jsp</result>
-     </action>
-     <action name="showLocs" class="controller.ShowLocs">
-        <result>/loc_list.jsp</result>
-        </action>
-     <action name="fileUpload" class="controller.FileUpload">
-        <result>/upload_res.jsp</result>
-     </action>    
-  </package>
-  <package name="validation" extends="struts-default">
-     <action name="xmlValidation" class="controller.XmlValidation">
-        <result>/validation_res.jsp</result>
-        <result name="input">/validation_input.jsp</result>
-        
-     </action>
-  </package>
-  <include file="ns/ns.xml"/>
-  <include file="interceptor/interceptor.xml"/>
-  <include file="interceptor/sec/sec.xml"/>
-  <include file="ex.xml"/>
-   
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<package name="default" extends="struts-default">
+		<action name="checkLogin" class="controller.CheckLogin">
+			<result name="success">/login_s2_suc.jsp</result>
+			<result name="suc" type="redirect">/login_s2_suc.jsp</result>
+			<result name="fail">/login_s2_fail.jsp</result>
+			<result name="input">/login_s2_tags.jsp</result>
+		</action>
+
+		<action name="compute" class="controller.Compute">
+			<result>/output.jsp</result>
+		</action>
+		<action name="logout" class="controller.Logout">
+			<result type="redirect">/index.jsp</result>
+		</action>
+		<action name="checkInDb" class="controller.CheckLogin" method="checkInDb">
+			<result name="suc" type="redirect">/login_s2_suc.jsp</result>
+			<result name="fail">/login_s2_fail.jsp</result>
+		</action>
+		<action name="checkLoginByObj" class="controller.CheckLoginByObj">
+			<result>/login_obj_suc.jsp</result>
+			<result name="input">/login_obj.jsp</result>
+		</action>
+		<action name="loginI18N" class="controller.LoginI18N">
+			<result name="input,fail">/login_i18n.jsp</result>
+			<result name="redirect" type="redirect">/login_i18n_suc.jsp</result>
+			<result name="forward">/login_i18n_suc.jsp</result>
+		</action>
+		<action name="showLocs" class="controller.ShowLocs">
+			<result>/loc_list.jsp</result>
+		</action>
+		<action name="fileUpload" class="controller.FileUpload">
+			<result>/upload_res.jsp</result>
+		</action>
+		<action name="fileUploadLimitType" class="controller.FileUpload">
+		    <interceptor-ref name="defaultStack">
+		    <param name="fileUpload.allowedTypes">image/*</param>
+		    </interceptor-ref>
+			<result>/upload_res.jsp</result>
+			<result name="input">/upload.jsp</result>
+		</action>
+		<action name="fileUploadLimitExt" class="controller.FileUpload">
+		    <interceptor-ref name="defaultStack">
+		    <param name="fileUpload.allowedExtensions">.txt,.xml</param>
+		    </interceptor-ref>
+			<result>/upload_res.jsp</result>
+			<result name="input">/upload.jsp</result>
+		</action>
+		
+		<action name="filesUpload" class="controller.FilesUpload">
+			<result>/upload_res.jsp</result>
+			<result name="input">/upload.jsp</result>
+			
+		</action>
+		<action name="txtDown" class="controller.DownFile">
+			<result type="stream">
+				<!-- public InputStream getTxtStream() -->
+				<param name="inputName">txtStream</param>
+				<param name="contentDisposition">attachment;filename="txt.txt"</param>
+			</result>
+		</action>
+		<action name="fileDown" class="controller.DownFile">
+		   <result type="stream">
+			<param name="contentType">${contentType}</param>
+			<param name="inputName">fileStream</param>
+			<param name="contentDisposition">attachment;filename="${cnFileName}"</param>
+			</result>
+		</action>
+	</package>
+	<package name="validation" extends="struts-default">
+		<action name="xmlValidation" class="controller.XmlValidation">
+			<result>/validation_res.jsp</result>
+			<result name="input">/validation_input.jsp</result>
+
+		</action>
+	</package>
+	<include file="ns/ns.xml" />
+	<include file="interceptor/interceptor.xml" />
+	<include file="interceptor/sec/sec.xml" />
+	<include file="ex.xml" />
+	<include file="jdbc.xml" />
+
 </struts>

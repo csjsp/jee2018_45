@@ -31,8 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="login_s2.jsp">strut2实现的登录</a>
     <a href="private.jsp">登录之后才能访问</a>
     <a href="logout.action">注销</a>
-    <br>
-    <a href="stu_list">显示所有学生</a>
+    
     <br>
     <a href="login_s2_tags.jsp">使用Struts2标签</a>
     <a href="login_obj.jsp">用对象接收值</a>
@@ -59,5 +58,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br>
     <a href="validation_input.jsp">演示</a>
     <br><a href="upload.jsp">文件上传</a>
+    <br><a href="txtDown">txt内容下载</a>
+	<br>jdbc<br>
+    <a href="stu_list">显示所有学生</a>
+    
       </body>
 </html>

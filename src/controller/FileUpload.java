@@ -28,12 +28,19 @@ public String getUploadFileName() {
 public void setUploadFileName(String uploadFileName) {
 	this.uploadFileName = uploadFileName;
 }
+String path;
+
+public String getPath() {
+	return path;
+}
 @Override public String execute()throws IOException{
-	String path=ServletActionContext
+	String path1=ServletActionContext
  			.getServletContext().getRealPath("/upload");
-	File destFile=new File(path,uploadFileName);
+	File destFile=new File(path1,uploadFileName);
 	Files.copy(upload.toPath(), destFile.toPath(),
 			StandardCopyOption.REPLACE_EXISTING);
+	this.path="upload/"+uploadFileName;
+	System.out.println(this.path);
 	return SUCCESS;
 	
 }

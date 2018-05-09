@@ -48,4 +48,10 @@
 			<message>应在${getText('format.date.display',{min})}和${getText('format.date.display',{max})}之间</message>
 		</field-validator>
 	</field>
+	<field name="stu">
+       <field-validator type="visitor">          
+          <param name="appendPrefix">true</param>
+          <message></message>
+       </field-validator>
+    </field>
 </validators>

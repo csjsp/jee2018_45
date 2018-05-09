@@ -1,6 +1,9 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import domain.Stu;
+
 import java.util.*;
 public class XmlValidation extends ActionSupport {
   int test_int;
@@ -8,6 +11,7 @@ public class XmlValidation extends ActionSupport {
   String test_stringlength;
   String pass,repass;
   Date test_date_jquery;
+  Stu stu;
   public int getTest_int() {
     return test_int;
   }
@@ -60,6 +64,14 @@ public Date getMinDate(){
 }
 public Date getMaxDate(){
 	return new GregorianCalendar(2020,0,1).getTime();
+}
+
+public Stu getStu() {
+  return stu;
+}
+
+public void setStu(Stu stu) {
+  this.stu = stu;
 }
   
 }

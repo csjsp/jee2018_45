@@ -1,75 +1,29 @@
-﻿多文件上传
-File[] 文本框名字
-String[] 文本框名字+ContentType
-String[] 文本框名字+FileName
-------
-文件下载，需要stream结果
-<result type="stream">
-        <!-- public InputStream getTxtStream() -->
-           <param name="inputName">txtStream</param>
-        </result>
-     
-public InputStream getTxtStream(){
-	return new ByteArrayInputStream("helloworld".getBytes());   
-   }
+﻿add
+insert into stu values()
+sql
+update
+int executeUpdate
 
-网站的目录下找文件
-return ServletActionContext
-.getServletContext()
-.getResourceAsStream("/"+path);
+http://localhost:8080/jee2018/stu_edit.action?stu.id=1&stu.username=zjhamsan
+memo
+select * from stu where id=1
 
-从类路径下找文件
-getClass()
-.getResourceAsStream("/struts.xml")
+stu_edit->Stu->stu_edit.jsp
+必须查数据库才能编辑信息
 
----
-通过action下载，⁯要知道下载的文件路径
-在文件上传结果页面，
-<s:url var="downUrl" action="fileDown">  
-     <s:param name="contentType" value="uploadContentType"/>
-     <s:param name="fileName" value="uploadFileName"/>
-     <s:param name="path" value="path"/>
-   </s:url>
-<a href="${downUrl}">通过action下载</a>
+update stu
+set username=?
+where id=?
+delete 
 
-xml中配置
-<action name="fileDown" class="controller.DownFile">
-   <result type="stream">
-	<param name="contentType">${contentType}</param>
-	<param name="inputName">fileStream</param>
-	<param name="contentDisposition">attachment;filename="${cnFileName}"</param>
-   </result>
-</action>
+http://localhost:8080/jee2018/stu_del.action?stu.id=0
 
- public InputStream getFileStream(){
-  return ServletActionContext.getServletContext()
-	   .getResourceAsStream("/"+path);
-}
-----------
+<a href="${delUrl}" onClick="return  readyDel();">del</a>
+Stu-validation.xml
 
-中文文件名，下载文件名有乱码，重新编码
-new String(fileName.getBytes(),
-"iso-8859-1")
-------
-上传文件限制
-所有文件的大小
-<constant name="struts.multipart.maxSize" value="1000000" />
-
-
-限制文件类型
-<interceptor-ref name="defaultStack">
-    <param name="fileUpload.allowedTypes">image/jpeg,image/gif</param>
-</interceptor-ref>
-
-也可以用*	 
-<param name="fileUpload.allowedTypes">image/*</param>
-
-限制文件的扩展名
-<interceptor-ref name="defaultStack">
-	 <param name="fileUpload.allowedExtensions">.txt,.xml</param>
-</interceptor-ref>
-
-文件的大小，单个文件的大小
-<interceptor-ref name="defaultStack">
-   <param name="fileUpload.maximumSize">10000</param>
-</interceptor-ref>
+<field name="stu">
+       <field-validator type="visitor">          
+	   文本框名字有没有前缀 stu.username 
+          <param name="appendPrefix">true</param>
+       </field-validator>
+    </field>
